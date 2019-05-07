@@ -1,0 +1,131 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90
+        },
+        "clusterName": {
+            "required": true,
+            "type": "string",
+            "minLength": 6,
+            "maxLength": 50
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "allOf": [
+                        {
+                            "description": "The Resource definition",
+                            "properties": {
+                                "id": {
+                                    "description": "Resource Id",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Resource name",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "Resource type",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "x-ms-azure-resource": true,
+                            "type": "object"
+                        }
+                    ],
+                    "description": "Definition of an Azure resource.",
+                    "properties": {
+                        "location": {
+                            "description": "Resource location",
+                            "type": "string",
+                            "x-ms-mutability": [
+                                "read",
+                                "create"
+                            ]
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags",
+                            "type": "object",
+                            "x-ms-mutability": [
+                                "read",
+                                "create",
+                                "update"
+                            ]
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "Single Event Hubs Cluster resource in List or Get operations.",
+            "properties": {
+                "properties": {
+                    "description": "Event Hubs Cluster properties supplied in responses in List or Get operations.",
+                    "properties": {
+                        "created": {
+                            "description": "The UTC time when the Event Hubs Cluster was created.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "metricId": {
+                            "description": "The metric ID of the cluster resource. Provided by the service and not modifiable by the user.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "updated": {
+                            "description": "The UTC time when the Event Hubs Cluster was last updated.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-client-flatten": true
+                },
+                "sku": {
+                    "description": "Properties of the cluster SKU.",
+                    "properties": {
+                        "capacity": {
+                            "description": "The quantity of Event Hubs Cluster Capacity Units contained in this cluster.",
+                            "format": "int32",
+                            "maximum": 32,
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "name": {
+                            "description": "Name of this SKU.",
+                            "enum": [
+                                "Dedicated"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "SkuName"
+                            }
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

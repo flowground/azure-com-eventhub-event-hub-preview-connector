@@ -1,0 +1,86 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90
+        },
+        "namespaceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 6,
+            "maxLength": 50
+        },
+        "ipFilterRuleName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "The Resource definition",
+                    "properties": {
+                        "id": {
+                            "description": "Resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Single item in a List or Get IpFilterRules operation",
+            "properties": {
+                "properties": {
+                    "description": "Properties supplied to create or update IpFilterRules",
+                    "properties": {
+                        "action": {
+                            "description": "The IP Filter Action",
+                            "enum": [
+                                "Accept",
+                                "Reject"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "IPAction"
+                            }
+                        },
+                        "filterName": {
+                            "description": "IP Filter name",
+                            "type": "string"
+                        },
+                        "ipMask": {
+                            "description": "IP Mask",
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-client-flatten": true
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

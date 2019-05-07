@@ -1,0 +1,424 @@
+{
+    "title": "EventHub2018PreviewManagementClient",
+    "description": "Azure Event Hubs client for managing Event Hubs Cluster, IPFilter Rules and VirtualNetworkRules resources.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/eventhub-EventHub-preview/2018-01-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all of the available Event Hub REST API operations.",
+            "description": "Lists all of the available Event Hub REST API operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_List": {
+            "main": "./lib/actions/Namespaces_List.js",
+            "title": "Lists all the available Namespaces within a subscription, irrespective of the resource groups.",
+            "description": "Lists all the available Namespaces within a subscription, irrespective of the resource groups.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_ListByResourceGroup": {
+            "main": "./lib/actions/Clusters_ListByResourceGroup.js",
+            "title": "Lists the available Event Hubs Clusters within an ARM resource group.",
+            "description": "Lists the available Event Hubs Clusters within an ARM resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_Get": {
+            "main": "./lib/actions/Clusters_Get.js",
+            "title": "Gets the resource description of the specified Event Hubs Cluster.",
+            "description": "Gets the resource description of the specified Event Hubs Cluster.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Clusters_Patch": {
+            "main": "./lib/actions/Clusters_Patch.js",
+            "title": "Modifies mutable properties on the Event Hubs Cluster. This operation is idempotent.",
+            "description": "Modifies mutable properties on the Event Hubs Cluster. This operation is idempotent.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Clusters_Patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Configuration_Get": {
+            "main": "./lib/actions/Configuration_Get.js",
+            "title": "Get all Event Hubs Cluster settings - a collection of key/value pairs which represent the quotas and settings imposed on the cluster.",
+            "description": "Get all Event Hubs Cluster settings - a collection of key/value pairs which represent the quotas and settings imposed on the cluster.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Configuration_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Configuration_Patch": {
+            "main": "./lib/actions/Configuration_Patch.js",
+            "title": "Replace all specified Event Hubs Cluster settings with those contained in the request body. Leaves the settings not specified in the request body unmodified.",
+            "description": "Replace all specified Event Hubs Cluster settings with those contained in the request body. Leaves the settings not specified in the request body unmodified.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Configuration_Patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_ListByResourceGroup": {
+            "main": "./lib/actions/Namespaces_ListByResourceGroup.js",
+            "title": "Lists the available Namespaces within a resource group.",
+            "description": "Lists the available Namespaces within a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_Delete": {
+            "main": "./lib/actions/Namespaces_Delete.js",
+            "title": "Deletes an existing namespace. This operation also removes all associated resources under the namespace.",
+            "description": "Deletes an existing namespace. This operation also removes all associated resources under the namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_Get": {
+            "main": "./lib/actions/Namespaces_Get.js",
+            "title": "Gets the description of the specified namespace.",
+            "description": "Gets the description of the specified namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_Update": {
+            "main": "./lib/actions/Namespaces_Update.js",
+            "title": "Creates or updates a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.",
+            "description": "Creates or updates a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CreateOrUpdate": {
+            "main": "./lib/actions/Namespaces_CreateOrUpdate.js",
+            "title": "Creates or updates a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.",
+            "description": "Creates or updates a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_ListIPFilterRules": {
+            "main": "./lib/actions/Namespaces_ListIPFilterRules.js",
+            "title": "Gets a list of IP Filter rules for a Namespace.",
+            "description": "Gets a list of IP Filter rules for a Namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_ListIPFilterRules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_DeleteIpFilterRule": {
+            "main": "./lib/actions/Namespaces_DeleteIpFilterRule.js",
+            "title": "Deletes an IpFilterRule for a Namespace.",
+            "description": "Deletes an IpFilterRule for a Namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_DeleteIpFilterRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_GetIpFilterRule": {
+            "main": "./lib/actions/Namespaces_GetIpFilterRule.js",
+            "title": "Gets an IpFilterRule for a Namespace by rule name.",
+            "description": "Gets an IpFilterRule for a Namespace by rule name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_GetIpFilterRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CreateOrUpdateIpFilterRule": {
+            "main": "./lib/actions/Namespaces_CreateOrUpdateIpFilterRule.js",
+            "title": "Creates or updates an IpFilterRule for a Namespace.",
+            "description": "Creates or updates an IpFilterRule for a Namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CreateOrUpdateIpFilterRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_GetNetworkRuleSet": {
+            "main": "./lib/actions/Namespaces_GetNetworkRuleSet.js",
+            "title": "Gets NetworkRuleSet for a Namespace.",
+            "description": "Gets NetworkRuleSet for a Namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_GetNetworkRuleSet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CreateOrUpdateNetworkRuleSet": {
+            "main": "./lib/actions/Namespaces_CreateOrUpdateNetworkRuleSet.js",
+            "title": "Create or update NetworkRuleSet for a Namespace.",
+            "description": "Create or update NetworkRuleSet for a Namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CreateOrUpdateNetworkRuleSet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_ListVirtualNetworkRules": {
+            "main": "./lib/actions/Namespaces_ListVirtualNetworkRules.js",
+            "title": "Gets a list of VirtualNetwork rules for a Namespace.",
+            "description": "Gets a list of VirtualNetwork rules for a Namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_ListVirtualNetworkRules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_DeleteVirtualNetworkRule": {
+            "main": "./lib/actions/Namespaces_DeleteVirtualNetworkRule.js",
+            "title": "Deletes an VirtualNetworkRule for a Namespace.",
+            "description": "Deletes an VirtualNetworkRule for a Namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_DeleteVirtualNetworkRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_GetVirtualNetworkRule": {
+            "main": "./lib/actions/Namespaces_GetVirtualNetworkRule.js",
+            "title": "Gets an VirtualNetworkRule for a Namespace by rule name.",
+            "description": "Gets an VirtualNetworkRule for a Namespace by rule name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_GetVirtualNetworkRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CreateOrUpdateVirtualNetworkRule": {
+            "main": "./lib/actions/Namespaces_CreateOrUpdateVirtualNetworkRule.js",
+            "title": "Creates or updates an VirtualNetworkRule for a Namespace.",
+            "description": "Creates or updates an VirtualNetworkRule for a Namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CreateOrUpdateVirtualNetworkRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

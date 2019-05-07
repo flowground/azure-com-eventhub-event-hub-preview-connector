@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90
+        },
+        "clusterName": {
+            "required": true,
+            "type": "string",
+            "minLength": 6,
+            "maxLength": 50
+        },
+        "requestBody": {
+            "required": [
+                "settings"
+            ],
+            "description": "Contains all settings for the cluster.",
+            "properties": {
+                "settings": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
